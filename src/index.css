@@ -1,0 +1,454 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================
+   INNERBLOOM — Design System
+   ============================ */
+
+:root {
+  /* Emotional Color Tokens */
+  --bg-primary: #0a0a12;
+  --bg-secondary: #12121f;
+  --bg-surface: rgba(255, 255, 255, 0.03);
+  --bg-glass: rgba(255, 255, 255, 0.05);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --text-primary: rgba(255, 255, 255, 0.92);
+  --text-secondary: rgba(255, 255, 255, 0.55);
+  --text-tertiary: rgba(255, 255, 255, 0.35);
+  --accent: #818cf8;
+  --accent-glow: rgba(129, 140, 248, 0.3);
+  --gradient-calm: linear-gradient(135deg, #0a0a12 0%, #0f1729 50%, #0a0a12 100%);
+  --gradient-anxious: linear-gradient(135deg, #0a0a12 0%, #1a1520 50%, #0a0a12 100%);
+  --gradient-motivated: linear-gradient(135deg, #0a0a12 0%, #1a1508 50%, #0a0a12 100%);
+  --gradient-tired: linear-gradient(135deg, #0a0a12 0%, #1a1510 50%, #0a0a12 100%);
+  --gradient-rescue: linear-gradient(135deg, #050508 0%, #0a0a12 50%, #050508 100%);
+  --transition-mood: 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background var(--transition-mood);
+}
+
+#root {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(129, 140, 248, 0.25);
+  color: white;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================
+   Glass Surfaces
+   ============================ */
+
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+}
+
+.glass-soft {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ============================
+   Mood Backgrounds
+   ============================ */
+
+.mood-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  transition: all var(--transition-mood);
+  pointer-events: none;
+}
+
+.mood-bg::before,
+.mood-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  transition: all var(--transition-mood);
+}
+
+.mood-bg.calm::before {
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(125, 211, 192, 0.08), transparent 70%);
+}
+
+.mood-bg.calm::after {
+  width: 400px;
+  height: 400px;
+  bottom: -100px;
+  left: -50px;
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.06), transparent 70%);
+}
+
+.mood-bg.anxious::before {
+  width: 500px;
+  height: 500px;
+  top: -150px;
+  right: -150px;
+  background: radial-gradient(circle, rgba(148, 163, 184, 0.06), transparent 70%);
+}
+
+.mood-bg.anxious::after {
+  width: 350px;
+  height: 350px;
+  bottom: -100px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.04), transparent 70%);
+}
+
+.mood-bg.motivated::before {
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.08), transparent 70%);
+}
+
+.mood-bg.motivated::after {
+  width: 400px;
+  height: 400px;
+  bottom: -100px;
+  left: -50px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.05), transparent 70%);
+}
+
+.mood-bg.tired::before {
+  width: 500px;
+  height: 500px;
+  top: -150px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(196, 168, 130, 0.06), transparent 70%);
+}
+
+.mood-bg.tired::after {
+  width: 300px;
+  height: 300px;
+  bottom: -100px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(196, 168, 130, 0.04), transparent 70%);
+}
+
+.mood-bg.rescue::before {
+  width: 800px;
+  height: 800px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.05), transparent 70%);
+  animation: breathe-ambient 8s ease-in-out infinite;
+}
+
+.mood-bg.rescue::after {
+  display: none;
+}
+
+@keyframes breathe-ambient {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* ============================
+   Typography Enhancement
+   ============================ */
+
+.text-display {
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.text-body-serif {
+  font-family: 'Lora', serif;
+  letter-spacing: 0.01em;
+  line-height: 1.7;
+}
+
+.text-micro {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+/* ============================
+   Breathing Orb
+   ============================ */
+
+.breathing-orb {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breathing-orb::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.15), rgba(129, 140, 248, 0.02));
+  animation: breathe-orb 6s ease-in-out infinite;
+}
+
+.breathing-orb::after {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.2), rgba(129, 140, 248, 0.05));
+  animation: breathe-orb 6s ease-in-out infinite 0.3s;
+}
+
+@keyframes breathe-orb {
+  0%, 100% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* ============================
+   Button System
+   ============================ */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #6366f1, #818cf8);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--text-primary);
+}
+
+.btn-rescue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-rescue:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.25);
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.1);
+}
+
+/* ============================
+   Utility Animations
+   ============================ */
+
+.animate-word-reveal > span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: wordReveal 0.5s ease-out forwards;
+}
+
+@keyframes wordReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger delays for word reveal */
+.word-delay-0 { animation-delay: 0ms !important; }
+.word-delay-1 { animation-delay: 80ms !important; }
+.word-delay-2 { animation-delay: 160ms !important; }
+.word-delay-3 { animation-delay: 240ms !important; }
+.word-delay-4 { animation-delay: 320ms !important; }
+.word-delay-5 { animation-delay: 400ms !important; }
+.word-delay-6 { animation-delay: 480ms !important; }
+.word-delay-7 { animation-delay: 560ms !important; }
+.word-delay-8 { animation-delay: 640ms !important; }
+.word-delay-9 { animation-delay: 720ms !important; }
+.word-delay-10 { animation-delay: 800ms !important; }
+
+/* ============================
+   Page Transitions
+   ============================ */
+
+.page-enter {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================
+   Responsive Breakpoints
+   ============================ */
+
+@media (max-width: 768px) {
+  .breathing-orb {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .mood-bg::before {
+    width: 300px !important;
+    height: 300px !important;
+  }
+  
+  .mood-bg::after {
+    width: 200px !important;
+    height: 200px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .breathing-orb {
+    width: 120px;
+    height: 120px;
+  }
+}
