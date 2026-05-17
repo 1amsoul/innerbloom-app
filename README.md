@@ -1,4 +1,9 @@
-InnerBloom
+# InnerBloom
+
+Live Demo: https://innerbloom-app.vercel.app/
+
+GitHub Repository:
+https://github.com/1amsoul/innerbloom-App
 
 InnerBloom is a wellness-focused emotional support application that creates adaptive affirmation experiences based on user emotional context.
 
@@ -8,7 +13,7 @@ Installation
 
 Clone repository:
 
-git clone git clone https://github.com/1amsoul/InnerBloom-App
+git clone git clone https://github.com/1amsoul/innerbloom-App
 cd InnerBloom-App
 git remote -v
 
