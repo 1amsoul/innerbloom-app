@@ -8,7 +8,9 @@ Installation
 
 Clone repository:
 
-git clone <repo-url>
+git clone git clone https://github.com/1amsoul/InnerBloom-App
+cd InnerBloom-App
+git remote -v
 
 Install dependencies:
 
