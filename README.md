@@ -14,7 +14,9 @@ Installation
 Clone repository:
 
 git clone git clone https://github.com/1amsoul/innerbloom-App
+
 cd InnerBloom-App
+
 git remote -v
 
 Install dependencies:
